@@ -20,13 +20,10 @@ public record UtenteDTO(
         String email,
 
         @NotBlank(message = "Inserisci la password, guai a te se metti 12345678, poi se ti rubano qualcosa e' colpa tua")
-        @Pattern(
-                regexp = "^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[!@#$%^&])[a-zA-Z0-9!@#$%^&]{8,20}$",
-                message = "Usa almeno una minuscola, una maiuscola, un numero e un carattere speciale, si cosi non puoi mettere 12345678"
-        )
+
         String password,
 
         @NotNull(message = "Dichiara il ruolo, no, imperatore della galassia non e' un ruolo")
-        @Size(min = 6, max = 15, message = "Il ruolo puo' essere ADMIN, ORGANIZZATORE o UTENTE")
+        @Size(min = 4, max = 15, message = "Il ruolo puo' essere ADMIN, ORGANIZZATORE o UTENTE")
         Role ruolo
 ) {}

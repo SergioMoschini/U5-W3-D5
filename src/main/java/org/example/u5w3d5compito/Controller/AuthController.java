@@ -1,5 +1,5 @@
 package org.example.u5w3d5compito.Controller;
-import jakarta.validation.ValidationException;
+import org.example.u5w3d5compito.exceptions.ValidationException;
 import org.example.u5w3d5compito.entities.Utente;
 import org.example.u5w3d5compito.payloads.LoginDTO;
 import org.example.u5w3d5compito.payloads.LoginRespDTO;
