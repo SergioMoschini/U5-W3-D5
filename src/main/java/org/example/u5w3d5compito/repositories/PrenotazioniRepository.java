@@ -8,7 +8,7 @@ import java.util.UUID;
 
 
 public interface PrenotazioniRepository extends JpaRepository <Prenotazione, UUID> {
-    List<Prenotazione> findByUtenteEdEvento(UUID eventoId, UUID utenteId);
+    List<Prenotazione> findByUtenteAndEvento(UUID eventoId, UUID utenteId);
     List<Prenotazione> findAllByEvento(UUID eventoId);
     Page<Prenotazione> findAllByUtente(UUID utenteId, Pageable pageable);
 }
