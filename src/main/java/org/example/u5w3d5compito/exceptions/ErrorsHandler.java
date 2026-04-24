@@ -1,0 +1,43 @@
+package org.example.u5w3d5compito.exceptions;
+
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class ErrorsHandler {
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorsListDTO handleValidation(ValidationException ex){
+        return new ErrorsListDTO(ex.getMessage(), ex.getErrorsList());
+    }
+    
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorDTO handleUnauthorized(NonAutorizzatoException ex){
+        return new ErrorDTO(ex.getMessage());
+
+    }
+        @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDTO handleBadRequest(BadRequestException ex){
+        return new ErrorDTO(ex.getMessage());
+    }
+
+
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorDTO handleNotFound(ChangeSetPersister.NotFoundException ex){
+        return new ErrorDTO(ex.getMessage());
+    }
+
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorDTO handleGeneralException(Exception ex){
+        return new ErrorDTO(ex.getMessage());
+    }
+}
